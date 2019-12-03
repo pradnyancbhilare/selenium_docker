@@ -1,0 +1,21 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="Book Flight Module" parallel="tests">
+	<test name="Book Flight 1">
+		<parameter name="numberOfPassengers" value="1" />
+		<classes>
+			<class name="com.udemy.selenium.tests.BookFlightTest" />
+		</classes>
+	</test>
+	<test name="Book Flight 2">
+		<parameter name="numberOfPassengers" value="2" />
+		<classes>
+			<class name="com.udemy.selenium.tests.BookFlightTest" />
+		</classes>
+	</test>
+	<test name="Book Flight 3">
+		<parameter name="numberOfPassengers" value="3" />
+		<classes>
+			<class name="com.udemy.selenium.tests.BookFlightTest" />
+		</classes>
+	</test>	
+</suite>

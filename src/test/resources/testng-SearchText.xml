@@ -1,0 +1,21 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="Search Text Module" parallel="tests">
+	<test name="Search Text - Java">
+		<parameter name="searchText" value="Java" />
+		<classes>
+			<class name="com.udemy.selenium.gogoduck.tests.SearchTest" />
+		</classes>
+	</test>	
+	<test name="Search Text - Javascript">
+		<parameter name="searchText" value="Javascript" />
+		<classes>
+			<class name="com.udemy.selenium.gogoduck.tests.SearchTest" />
+		</classes>
+	</test>	
+	<test name="Search Text - QA">
+		<parameter name="searchText" value="QA" />
+		<classes>
+			<class name="com.udemy.selenium.gogoduck.tests.SearchTest" />
+		</classes>
+	</test>			
+</suite>

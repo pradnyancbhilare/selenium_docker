@@ -1,0 +1,63 @@
+version: "3"
+services:
+  hub:
+    image: selenium/hub:3.14
+    ports:
+      - "4444:4444"
+  chrome:
+    image: selenium/node-chrome:3.14
+    depends_on:
+      - hub
+    environment:
+      - HUB_HOST=hub
+  firefox:
+    image: selenium/node-firefox:3.14
+    shm_size: '1gb'
+    depends_on:
+      - hub
+    environment:
+      - HUB_HOST=hub
+  search-module-1:
+    image: pbhilare8813/selenium-docker
+    depends_on:
+      - chrome
+      - firefox
+    environment:
+      - BROWSER=firefox
+      - HUB_HOST=hub
+      - MODULE=testng-SearchText.xml
+    volumes:
+      - ./search_results_1_ff:/home/users/pradnyan/test-output
+  search-module-2:
+    image: pbhilare8813/selenium-docker
+    depends_on:
+      - chrome
+      - firefox
+    environment:
+      - BROWSER=chrome
+      - HUB_HOST=hub
+      - MODULE=testng-SearchText.xml
+    volumes:
+      - ./search_results_2_chm:/home/users/pradnyan/test-output
+  book-flight-module-1:
+    image: pbhilare8813/selenium-docker
+    depends_on:
+      - chrome
+      - firefox
+    environment:
+      - BROWSER=chrome
+      - HUB_HOST=hub
+      - MODULE=testng-BookFlight.xml
+    volumes:
+      - ./flight_results_1_chm:/home/users/pradnyan/test-output
+  book-flight-module-2:
+    image: pbhilare8813/selenium-docker
+    depends_on:
+      - chrome
+      - firefox
+    environment:
+      - BROWSER=firefox
+      - HUB_HOST=hub
+      - MODULE=testng-BookFlight.xml
+    volumes:
+      - ./flight_results_2_ff:/home/users/pradnyan/test-output
