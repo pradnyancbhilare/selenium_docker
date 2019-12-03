@@ -4,19 +4,22 @@ pipeline {
     stages {
         stage('Build Jar') {
             steps {
-                sh "mvn clean package -DskipTests"
+                //sh
+                bat "mvn clean package -DskipTests"
             }
         }
         stage('Build Image') {
             steps {
-                sh "docker build -t='vinsdocker/selenium-docker' ."
+                //sh
+                bat "docker build -t='vinsdocker/selenium-docker' ."
             }
         }
         stage('Push Image') {
             steps {
 			    withCredentials([usernamePassword(credentialsId: 'dockerhub', passwordVariable: 'pass', usernameVariable: 'user')]) {
-			        sh "docker login --username=${user} --password=${pass}"
-			        sh "docker push vinsdocker/selenium-docker:latest"
+                    //sh
+			        bat "docker login --username=${user} --password=${pass}"
+			        bat "docker push vinsdocker/selenium-docker:latest"
 			    }                           
             }
         }
