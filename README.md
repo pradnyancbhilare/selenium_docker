@@ -1,1 +1,1 @@
-# selenium_docker
+# Selenium Docker project
